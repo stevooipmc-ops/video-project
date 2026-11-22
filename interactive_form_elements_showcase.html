@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive HTML Form & Output Showcase</title>
+    <!-- Load Tailwind CSS for responsive layout and modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        /* Custom styling for alternating size=5 and size=10 horizontal rules */
+        hr.hr-5 {
+            height: 5px;
+            border: none;
+            border-radius: 9999px;
+            margin: 2rem 0;
+        }
+        hr.hr-10 {
+            height: 10px;
+            border: none;
+            border-radius: 9999px;
+            margin: 2rem 0;
+        }
+        /* Custom scrollbar for scroll-down list boxes */
+        select[size]::-webkit-scrollbar {
+            width: 8px;
+        }
+        select[size]::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 6px;
+        }
+        select[size]::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 6px;
+        }
+        select[size]::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+
+    <!-- Main Container -->
+    <div class="max-w-5xl mx-auto bg-white shadow-xl rounded-2xl border border-slate-200 overflow-hidden">
+        
+        <!-- Header Banner -->
+        <header class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-8 sm:p-10 text-center">
+            <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wider uppercase bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 rounded-full mb-3">
+                Complete HTML5 Element Reference
+            </span>
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2">
+                Interactive Forms, Controls &amp; Outputs Showcase
+            </h1>
+            <p class="text-slate-300 max-w-2xl mx-auto text-sm sm:text-base">
+                Featuring 10 individual Yes/No forms, 10 labeled text inputs, 5 drop-down menus, 10 scrollable list boxes, 2 action buttons, alternating colored horizontal rules, and 10 live dynamic output displays.
+            </p>
+        </header>
+
+        <!-- Notification Toast (Replaces alert() cleanly) -->
+        <div id="statusBanner" class="hidden mx-6 sm:mx-10 mt-6 p-4 rounded-xl border text-sm font-medium flex items-center justify-between transition-all duration-300">
+            <span id="statusText"></span>
+            <button type="button" onclick="hideBanner()" class="ml-4 text-xs uppercase tracking-wider font-bold opacity-75 hover:opacity-100">Dismiss</button>
+        </div>
+
+        <main class="p-6 sm:p-10">
+
+            <!-- ===================================================================== -->
+            <!-- SECTION 1: TEN (10) FORMS WITH YES / NO RADIO BUTTONS                 -->
+            <!-- ===================================================================== -->
+            <section aria-labelledby="section-forms">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+                    <div>
+                        <h2 id="section-forms" class="text-2xl font-bold text-slate-900">1. Survey Questionnaire (Form #1 &ndash; Form #10)</h2>
+                        <p class="text-sm text-slate-500">Each item is an independent <code class="bg-slate-100 px-1.5 py-0.5 rounded text-indigo-600">&lt;form&gt;</code> element with Yes and No radio options.</p>
+                    </div>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 self-start sm:self-center">
+                        10 Distinct Forms
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Form #1 -->
+                    <form id="form-1" name="form1" class="yesno-form p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-indigo-300 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-100 px-2.5 py-0.5 rounded-md">Form #1</span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-800 mb-3">Do you enjoy building interactive web applications?</p>
+                        <div class="flex items-center gap-6">
+                            <label for="f1-yes" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f1-yes" name="q1_webdev" value="Yes" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                                <span>Yes</span>
+                            </label>
+                            <label for="f1-no" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f1-no" name="q1_webdev" value="No" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </form>
+
+                    <!-- Form #2 -->
+                    <form id="form-2" name="form2" class="yesno-form p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-indigo-300 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-md">Form #2</span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-800 mb-3">Have you ever contributed to an open-source project?</p>
+                        <div class="flex items-center gap-6">
+                            <label for="f2-yes" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f2-yes" name="q2_opensource" value="Yes" class="w-4 h-4 text-emerald-600 focus:ring-emerald-500">
+                                <span>Yes</span>
+                            </label>
+                            <label for="f2-no" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f2-no" name="q2_opensource" value="No" class="w-4 h-4 text-emerald-600 focus:ring-emerald-500">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </form>
+
+                    <!-- Form #3 -->
+                    <form id="form-3" name="form3" class="yesno-form p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-indigo-300 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-rose-700 bg-rose-100 px-2.5 py-0.5 rounded-md">Form #3</span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-800 mb-3">Do you prefer dark mode over light mode when coding?</p>
+                        <div class="flex items-center gap-6">
+                            <label for="f3-yes" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f3-yes" name="q3_darkmode" value="Yes" class="w-4 h-4 text-rose-600 focus:ring-rose-500">
+                                <span>Yes</span>
+                            </label>
+                            <label for="f3-no" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f3-no" name="q3_darkmode" value="No" class="w-4 h-4 text-rose-600 focus:ring-rose-500">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </form>
+
+                    <!-- Form #4 -->
+                    <form id="form-4" name="form4" class="yesno-form p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-indigo-300 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-2.5 py-0.5 rounded-md">Form #4</span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-800 mb-3">Are you currently subscribed to any technology newsletters?</p>
+                        <div class="flex items-center gap-6">
+                            <label for="f4-yes" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f4-yes" name="q4_newsletter" value="Yes" class="w-4 h-4 text-amber-600 focus:ring-amber-500">
+                                <span>Yes</span>
+                            </label>
+                            <label for="f4-no" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f4-no" name="q4_newsletter" value="No" class="w-4 h-4 text-amber-600 focus:ring-amber-500">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </form>
+
+                    <!-- Form #5 -->
+                    <form id="form-5" name="form5" class="yesno-form p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-indigo-300 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-100 px-2.5 py-0.5 rounded-md">Form #5</span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-800 mb-3">Do you work or study remotely from home?</p>
+                        <div class="flex items-center gap-6">
+                            <label for="f5-yes" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f5-yes" name="q5_remote" value="Yes" class="w-4 h-4 text-purple-600 focus:ring-purple-500">
+                                <span>Yes</span>
+                            </label>
+                            <label for="f5-no" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f5-no" name="q5_remote" value="No" class="w-4 h-4 text-purple-600 focus:ring-purple-500">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </form>
+
+                    <!-- Form #6 -->
+                    <form id="form-6" name="form6" class="yesno-form p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-indigo-300 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-cyan-700 bg-cyan-100 px-2.5 py-0.5 rounded-md">Form #6</span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-800 mb-3">Do you use version control (such as Git) daily?</p>
+                        <div class="flex items-center gap-6">
+                            <label for="f6-yes" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f6-yes" name="q6_git" value="Yes" class="w-4 h-4 text-cyan-600 focus:ring-cyan-500">
+                                <span>Yes</span>
+                            </label>
+                            <label for="f6-no" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f6-no" name="q6_git" value="No" class="w-4 h-4 text-cyan-600 focus:ring-cyan-500">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </form>
+
+                    <!-- Form #7 -->
+                    <form id="form-7" name="form7" class="yesno-form p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-indigo-300 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-100 px-2.5 py-0.5 rounded-md">Form #7</span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-800 mb-3">Are you interested in artificial intelligence and machine learning?</p>
+                        <div class="flex items-center gap-6">
+                            <label for="f7-yes" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f7-yes" name="q7_aiml" value="Yes" class="w-4 h-4 text-teal-600 focus:ring-teal-500">
+                                <span>Yes</span>
+                            </label>
+                            <label for="f7-no" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f7-no" name="q7_aiml" value="No" class="w-4 h-4 text-teal-600 focus:ring-teal-500">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </form>
+
+                    <!-- Form #8 -->
+                    <form id="form-8" name="form8" class="yesno-form p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-indigo-300 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-orange-700 bg-orange-100 px-2.5 py-0.5 rounded-md">Form #8</span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-800 mb-3">Do you regularly back up your personal files to the cloud?</p>
+                        <div class="flex items-center gap-6">
+                            <label for="f8-yes" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f8-yes" name="q8_cloud" value="Yes" class="w-4 h-4 text-orange-600 focus:ring-orange-500">
+                                <span>Yes</span>
+                            </label>
+                            <label for="f8-no" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f8-no" name="q8_cloud" value="No" class="w-4 h-4 text-orange-600 focus:ring-orange-500">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </form>
+
+                    <!-- Form #9 -->
+                    <form id="form-9" name="form9" class="yesno-form p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-indigo-300 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-pink-700 bg-pink-100 px-2.5 py-0.5 rounded-md">Form #9</span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-800 mb-3">Would you recommend this HTML5 showcase to a colleague?</p>
+                        <div class="flex items-center gap-6">
+                            <label for="f9-yes" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f9-yes" name="q9_recommend" value="Yes" class="w-4 h-4 text-pink-600 focus:ring-pink-500">
+                                <span>Yes</span>
+                            </label>
+                            <label for="f9-no" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f9-no" name="q9_recommend" value="No" class="w-4 h-4 text-pink-600 focus:ring-pink-500">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </form>
+
+                    <!-- Form #10 -->
+                    <form id="form-10" name="form10" class="yesno-form p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-indigo-300 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100 px-2.5 py-0.5 rounded-md">Form #10</span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-800 mb-3">Do you agree to the terms and conditions of this demonstration?</p>
+                        <div class="flex items-center gap-6">
+                            <label for="f10-yes" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f10-yes" name="q10_terms" value="Yes" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                                <span>Yes</span>
+                            </label>
+                            <label for="f10-no" class="inline-flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 p-1">
+                                <input type="radio" id="f10-no" name="q10_terms" value="No" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- ===================================================================== -->
+            <!-- HORIZONTAL RULE #1: SIZE 5, INDIGO                                    -->
+            <!-- ===================================================================== -->
+            <hr size="5" color="#4f46e5" class="hr-5 bg-indigo-600" title="Horizontal Rule - Size 5, Indigo">
+
+            <!-- ===================================================================== -->
+            <!-- SECTION 2: TEN (10) LABELED TEXT BOXES                                -->
+            <!-- ===================================================================== -->
+            <section aria-labelledby="section-textboxes">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+                    <div>
+                        <h2 id="section-textboxes" class="text-2xl font-bold text-slate-900">2. Personal &amp; Contact Information (10 Text Boxes)</h2>
+                        <p class="text-sm text-slate-500">Enter details in the 10 labeled <code class="bg-slate-100 px-1.5 py-0.5 rounded text-emerald-600">&lt;input type="text"&gt;</code> fields below.</p>
+                    </div>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 self-start sm:self-center">
+                        10 Text Inputs
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Text Box 1: First Name -->
+                    <div>
+                        <label for="txtFirstName" class="block text-sm font-semibold text-slate-700 mb-1.5">1. First Name</label>
+                        <input type="text" id="txtFirstName" name="firstName" placeholder="e.g., Kwame"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition">
+                    </div>
+
+                    <!-- Text Box 2: Family Name -->
+                    <div>
+                        <label for="txtFamilyName" class="block text-sm font-semibold text-slate-700 mb-1.5">2. Family Name</label>
+                        <input type="text" id="txtFamilyName" name="familyName" placeholder="e.g., Mensah"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition">
+                    </div>
+
+                    <!-- Text Box 3: Middle Name -->
+                    <div>
+                        <label for="txtMiddleName" class="block text-sm font-semibold text-slate-700 mb-1.5">3. Middle Name</label>
+                        <input type="text" id="txtMiddleName" name="middleName" placeholder="e.g., Kofi"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition">
+                    </div>
+
+                    <!-- Text Box 4: Email Address -->
+                    <div>
+                        <label for="txtEmail" class="block text-sm font-semibold text-slate-700 mb-1.5">4. Email Address</label>
+                        <input type="text" id="txtEmail" name="emailAddress" placeholder="e.g., kwame.mensah@example.com"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition">
+                    </div>
+
+                    <!-- Text Box 5: Phone Number -->
+                    <div>
+                        <label for="txtPhone" class="block text-sm font-semibold text-slate-700 mb-1.5">5. Phone Number</label>
+                        <input type="text" id="txtPhone" name="phoneNumber" placeholder="e.g., +233 24 000 0000"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition">
+                    </div>
+
+                    <!-- Text Box 6: Street Address -->
+                    <div>
+                        <label for="txtStreet" class="block text-sm font-semibold text-slate-700 mb-1.5">6. Street Address</label>
+                        <input type="text" id="txtStreet" name="streetAddress" placeholder="e.g., 14 Independence Avenue"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition">
+                    </div>
+
+                    <!-- Text Box 7: City -->
+                    <div>
+                        <label for="txtCity" class="block text-sm font-semibold text-slate-700 mb-1.5">7. City</label>
+                        <input type="text" id="txtCity" name="city" placeholder="e.g., Accra"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition">
+                    </div>
+
+                    <!-- Text Box 8: Country -->
+                    <div>
+                        <label for="txtCountry" class="block text-sm font-semibold text-slate-700 mb-1.5">8. Country</label>
+                        <input type="text" id="txtCountry" name="country" placeholder="e.g., Ghana"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition">
+                    </div>
+
+                    <!-- Text Box 9: Postal Code -->
+                    <div>
+                        <label for="txtPostalCode" class="block text-sm font-semibold text-slate-700 mb-1.5">9. Postal Code</label>
+                        <input type="text" id="txtPostalCode" name="postalCode" placeholder="e.g., GA-107-4521"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition">
+                    </div>
+
+                    <!-- Text Box 10: Occupation -->
+                    <div class="sm:col-span-2 lg:col-span-3">
+                        <label for="txtOccupation" class="block text-sm font-semibold text-slate-700 mb-1.5">10. Occupation</label>
+                        <input type="text" id="txtOccupation" name="occupation" placeholder="e.g., Senior Software Engineer"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition">
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===================================================================== -->
+            <!-- HORIZONTAL RULE #2: SIZE 10, EMERALD GREEN                            -->
+            <!-- ===================================================================== -->
+            <hr size="10" color="#10b981" class="hr-10 bg-emerald-500" title="Horizontal Rule - Size 10, Emerald">
+
+            <!-- ===================================================================== -->
+            <!-- SECTION 3: FIVE (5) DROP-DOWN MENUS                                   -->
+            <!-- ===================================================================== -->
+            <section aria-labelledby="section-dropdowns">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+                    <div>
+                        <h2 id="section-dropdowns" class="text-2xl font-bold text-slate-900">3. Profile Attributes (5 Drop-Down Menus)</h2>
+                        <p class="text-sm text-slate-500">Single-selection <code class="bg-slate-100 px-1.5 py-0.5 rounded text-rose-600">&lt;select&gt;</code> drop-down menus with appropriate options.</p>
+                    </div>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200 self-start sm:self-center">
+                        5 Drop-Down Menus
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Drop-down 1: Title / Salutation -->
+                    <div>
+                        <label for="ddTitle" class="block text-sm font-semibold text-slate-700 mb-1.5">1. Title / Salutation</label>
+                        <select id="ddTitle" name="title" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500 transition">
+                            <option value="Mr.">Mr.</option>
+                            <option value="Ms.">Ms.</option>
+                            <option value="Mrs.">Mrs.</option>
+                            <option value="Dr.">Dr.</option>
+                            <option value="Prof.">Prof.</option>
+                            <option value="Eng.">Eng.</option>
+                        </select>
+                    </div>
+
+                    <!-- Drop-down 2: Gender -->
+                    <div>
+                        <label for="ddGender" class="block text-sm font-semibold text-slate-700 mb-1.5">2. Gender</label>
+                        <select id="ddGender" name="gender" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500 transition">
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Non-binary">Non-binary</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                    </div>
+
+                    <!-- Drop-down 3: Highest Education Level -->
+                    <div>
+                        <label for="ddEducation" class="block text-sm font-semibold text-slate-700 mb-1.5">3. Highest Education Level</label>
+                        <select id="ddEducation" name="education" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500 transition">
+                            <option value="High School Diploma">High School Diploma</option>
+                            <option value="Associate Degree">Associate Degree</option>
+                            <option value="Bachelor's Degree" selected>Bachelor's Degree</option>
+                            <option value="Master's Degree">Master's Degree</option>
+                            <option value="Doctorate (Ph.D.)">Doctorate (Ph.D.)</option>
+                        </select>
+                    </div>
+
+                    <!-- Drop-down 4: Marital Status -->
+                    <div>
+                        <label for="ddMarital" class="block text-sm font-semibold text-slate-700 mb-1.5">4. Marital Status</label>
+                        <select id="ddMarital" name="maritalStatus" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500 transition">
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
+                    </div>
+
+                    <!-- Drop-down 5: Preferred Contact Method -->
+                    <div class="sm:col-span-2 lg:col-span-2">
+                        <label for="ddContact" class="block text-sm font-semibold text-slate-700 mb-1.5">5. Preferred Contact Method</label>
+                        <select id="ddContact" name="contactMethod" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500 transition">
+                            <option value="Email Address">Email Address</option>
+                            <option value="Mobile Phone Call">Mobile Phone Call</option>
+                            <option value="SMS / Text Message">SMS / Text Message</option>
+                            <option value="WhatsApp Message">WhatsApp Message</option>
+                            <option value="Postal Mail">Postal Mail</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===================================================================== -->
+            <!-- HORIZONTAL RULE #3: SIZE 5, ROSE RED                                  -->
+            <!-- ===================================================================== -->
+            <hr size="5" color="#f43f5e" class="hr-5 bg-rose-500" title="Horizontal Rule - Size 5, Rose">
+
+            <!-- ===================================================================== -->
+            <!-- SECTION 4: TEN (10) SCROLL-DOWN LIST BOXES                            -->
+            <!-- ===================================================================== -->
+            <section aria-labelledby="section-listboxes">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+                    <div>
+                        <h2 id="section-listboxes" class="text-2xl font-bold text-slate-900">4. Interests &amp; Skills (10 Scroll-Down List Boxes)</h2>
+                        <p class="text-sm text-slate-500">Multi-line scrollable list boxes (<code class="bg-slate-100 px-1.5 py-0.5 rounded text-amber-600">&lt;select multiple size="4"&gt;</code>). Hold Ctrl/Cmd to select multiple items.</p>
+                    </div>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 self-start sm:self-center">
+                        10 Scroll List Boxes
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Scroll List Box 1: Programming Languages -->
+                    <div>
+                        <label for="lstProgramming" class="block text-sm font-semibold text-slate-700 mb-1.5">1. Programming Languages</label>
+                        <select id="lstProgramming" name="programmingLanguages" multiple size="4" class="w-full p-2 rounded-xl border border-slate-300 bg-white text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="HTML5 & CSS3" selected>HTML5 &amp; CSS3</option>
+                            <option value="JavaScript (ES6+)" selected>JavaScript (ES6+)</option>
+                            <option value="Python">Python</option>
+                            <option value="TypeScript">TypeScript</option>
+                            <option value="Java">Java</option>
+                            <option value="C++">C++</option>
+                            <option value="Rust">Rust</option>
+                            <option value="Go">Go</option>
+                        </select>
+                    </div>
+
+                    <!-- Scroll List Box 2: Favorite Fruits -->
+                    <div>
+                        <label for="lstFruits" class="block text-sm font-semibold text-slate-700 mb-1.5">2. Favorite Fruits</label>
+                        <select id="lstFruits" name="favoriteFruits" multiple size="4" class="w-full p-2 rounded-xl border border-slate-300 bg-white text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="Mango" selected>Mango</option>
+                            <option value="Pineapple">Pineapple</option>
+                            <option value="Banana">Banana</option>
+                            <option value="Strawberry">Strawberry</option>
+                            <option value="Watermelon">Watermelon</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Apple">Apple</option>
+                        </select>
+                    </div>
+
+                    <!-- Scroll List Box 3: Countries Visited -->
+                    <div>
+                        <label for="lstCountries" class="block text-sm font-semibold text-slate-700 mb-1.5">3. Countries Visited</label>
+                        <select id="lstCountries" name="countriesVisited" multiple size="4" class="w-full p-2 rounded-xl border border-slate-300 bg-white text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="Ghana" selected>Ghana</option>
+                            <option value="Nigeria">Nigeria</option>
+                            <option value="Kenya">Kenya</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="United States">United States</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Germany">Germany</option>
+                        </select>
+                    </div>
+
+                    <!-- Scroll List Box 4: Hobbies & Interests -->
+                    <div>
+                        <label for="lstHobbies" class="block text-sm font-semibold text-slate-700 mb-1.5">4. Hobbies &amp; Interests</label>
+                        <select id="lstHobbies" name="hobbies" multiple size="4" class="w-full p-2 rounded-xl border border-slate-300 bg-white text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="Photography" selected>Photography</option>
+                            <option value="Reading">Reading</option>
+                            <option value="Traveling">Traveling</option>
+                            <option value="Gardening">Gardening</option>
+                            <option value="Cooking">Cooking</option>
+                            <option value="Chess">Chess</option>
+                            <option value="Hiking">Hiking</option>
+                        </select>
+                    </div>
+
+                    <!-- Scroll List Box 5: Preferred Subjects -->
+                    <div>
+                        <label for="lstSubjects" class="block text-sm font-semibold text-slate-700 mb-1.5">5. Preferred Subjects</label>
+                        <select id="lstSubjects" name="subjects" multiple size="4" class="w-full p-2 rounded-xl border border-slate-300 bg-white text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="Computer Science" selected>Computer Science</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Economics">Economics</option>
+                            <option value="Literature">Literature</option>
+                            <option value="History">History</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                        </select>
+                    </div>
+
+                    <!-- Scroll List Box 6: Musical Instruments -->
+                    <div>
+                        <label for="lstInstruments" class="block text-sm font-semibold text-slate-700 mb-1.5">6. Musical Instruments</label>
+                        <select id="lstInstruments" name="instruments" multiple size="4" class="w-full p-2 rounded-xl border border-slate-300 bg-white text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="Piano / Keyboard" selected>Piano / Keyboard</option>
+                            <option value="Acoustic Guitar">Acoustic Guitar</option>
+                            <option value="Drums / Percussion">Drums / Percussion</option>
+                            <option value="Violin">Violin</option>
+                            <option value="Saxophone">Saxophone</option>
+                            <option value="Flute">Flute</option>
+                            <option value="Bass Guitar">Bass Guitar</option>
+                        </select>
+                    </div>
+
+                    <!-- Scroll List Box 7: Sports Activities -->
+                    <div>
+                        <label for="lstSports" class="block text-sm font-semibold text-slate-700 mb-1.5">7. Sports Activities</label>
+                        <select id="lstSports" name="sports" multiple size="4" class="w-full p-2 rounded-xl border border-slate-300 bg-white text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="Football / Soccer" selected>Football / Soccer</option>
+                            <option value="Basketball">Basketball</option>
+                            <option value="Tennis">Tennis</option>
+                            <option value="Swimming">Swimming</option>
+                            <option value="Track & Field">Track &amp; Field</option>
+                            <option value="Table Tennis">Table Tennis</option>
+                            <option value="Cycling">Cycling</option>
+                        </select>
+                    </div>
+
+                    <!-- Scroll List Box 8: Software Tools -->
+                    <div>
+                        <label for="lstTools" class="block text-sm font-semibold text-slate-700 mb-1.5">8. Software Tools</label>
+                        <select id="lstTools" name="softwareTools" multiple size="4" class="w-full p-2 rounded-xl border border-slate-300 bg-white text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="VS Code" selected>VS Code</option>
+                            <option value="Git & GitHub" selected>Git &amp; GitHub</option>
+                            <option value="Figma">Figma</option>
+                            <option value="Docker">Docker</option>
+                            <option value="PostgreSQL">PostgreSQL</option>
+                            <option value="Linux Terminal">Linux Terminal</option>
+                            <option value="Postman">Postman</option>
+                        </select>
+                    </div>
+
+                    <!-- Scroll List Box 9: Books & Genres -->
+                    <div>
+                        <label for="lstGenres" class="block text-sm font-semibold text-slate-700 mb-1.5">9. Books &amp; Genres</label>
+                        <select id="lstGenres" name="bookGenres" multiple size="4" class="w-full p-2 rounded-xl border border-slate-300 bg-white text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="Science Fiction" selected>Science Fiction</option>
+                            <option value="Technology & Computing">Technology &amp; Computing</option>
+                            <option value="Biographies">Biographies</option>
+                            <option value="Mystery & Thriller">Mystery &amp; Thriller</option>
+                            <option value="Historical Fiction">Historical Fiction</option>
+                            <option value="Philosophy">Philosophy</option>
+                            <option value="Self-Development">Self-Development</option>
+                        </select>
+                    </div>
+
+                    <!-- Scroll List Box 10: Spoken Languages -->
+                    <div class="sm:col-span-2 lg:col-span-3">
+                        <label for="lstLanguages" class="block text-sm font-semibold text-slate-700 mb-1.5">10. Spoken Languages</label>
+                        <select id="lstLanguages" name="spokenLanguages" multiple size="4" class="w-full p-2 rounded-xl border border-slate-300 bg-white text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="English" selected>English</option>
+                            <option value="Twi / Akan">Twi / Akan</option>
+                            <option value="French">French</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="German">German</option>
+                            <option value="Arabic">Arabic</option>
+                            <option value="Swahili">Swahili</option>
+                            <option value="Mandarin Chinese">Mandarin Chinese</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===================================================================== -->
+            <!-- HORIZONTAL RULE #4: SIZE 10, AMBER ORANGE                             -->
+            <!-- ===================================================================== -->
+            <hr size="10" color="#f59e0b" class="hr-10 bg-amber-500" title="Horizontal Rule - Size 10, Amber">
+
+            <!-- ===================================================================== -->
+            <!-- SECTION 5: TWO (2) ACTION BUTTONS (SUBMIT & RESET)                    -->
+            <!-- ===================================================================== -->
+            <section aria-labelledby="section-buttons" class="bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-inner">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div>
+                        <h2 id="section-buttons" class="text-xl font-bold text-white">5. Form Submission &amp; Reset Controls (2 Buttons)</h2>
+                        <p class="text-sm text-slate-300 mt-1">
+                            Click <strong>Submit</strong> to compute and display all results in the 10 <code class="text-amber-300">&lt;output&gt;</code> panels below, or <strong>Reset</strong> to restore defaults.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-4 w-full md:w-auto justify-end">
+                        <!-- Button 1: Submit -->
+                        <button type="submit" id="btnSubmit"
+                            class="flex-1 md:flex-initial px-7 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 active:scale-[0.99] text-white font-bold text-sm tracking-wide shadow-lg shadow-indigo-500/30 transition cursor-pointer">
+                            Submit Data
+                        </button>
+                        <!-- Button 2: Reset -->
+                        <button type="reset" id="btnReset"
+                            class="flex-1 md:flex-initial px-7 py-3.5 rounded-xl bg-slate-700 hover:bg-slate-600 active:scale-[0.99] text-slate-100 font-bold text-sm tracking-wide border border-slate-600 transition cursor-pointer">
+                            Reset All
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===================================================================== -->
+            <!-- HORIZONTAL RULE #5: SIZE 5, PURPLE                                    -->
+            <!-- ===================================================================== -->
+            <hr size="5" color="#9333ea" class="hr-5 bg-purple-600" title="Horizontal Rule - Size 5, Purple">
+
+            <!-- ===================================================================== -->
+            <!-- SECTION 6: TEN (10) OUTPUT ELEMENTS WITH COLORED HEADINGS             -->
+            <!-- ===================================================================== -->
+            <section aria-labelledby="section-outputs">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+                    <div>
+                        <h2 id="section-outputs" class="text-2xl font-bold text-slate-900">6. Live Dynamic Results (10 Output Elements)</h2>
+                        <p class="text-sm text-slate-500">Ten semantic <code class="bg-slate-100 px-1.5 py-0.5 rounded text-purple-600">&lt;output&gt;</code> elements with distinct colored headings. Try the live range sliders or click <strong>Submit Data</strong>.</p>
+                    </div>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200 self-start sm:self-center">
+                        10 Output Elements
+                    </span>
+                </div>
+
+                <!-- Interactive Quick Calculator Strip feeding Output #9 and Output #10 live -->
+                <div class="mb-6 p-5 rounded-2xl bg-gradient-to-r from-slate-50 to-indigo-50/60 border border-indigo-100 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="rngScore" class="flex justify-between text-sm font-semibold text-slate-700 mb-2">
+                            <span>Interactive Skill Confidence Slider (Updates Output #9):</span>
+                            <span id="rngScoreVal" class="text-indigo-600 font-bold">85%</span>
+                        </label>
+                        <input type="range" id="rngScore" min="0" max="100" value="85" class="w-full accent-indigo-600 cursor-pointer">
+                    </div>
+                    <div>
+                        <label for="rngHours" class="flex justify-between text-sm font-semibold text-slate-700 mb-2">
+                            <span>Weekly Coding Practice Hours (Updates Output #10):</span>
+                            <span id="rngHoursVal" class="text-teal-600 font-bold">15 hrs</span>
+                        </label>
+                        <input type="range" id="rngHours" min="1" max="60" value="15" class="w-full accent-teal-600 cursor-pointer">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- Output #1: Crimson Red Heading -->
+                    <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <h3 class="text-base font-extrabold text-red-600 mb-1.5">Output #1 &mdash; Full Name &amp; Salutation</h3>
+                        <output id="out-1" name="output1" for="ddTitle txtFirstName txtMiddleName txtFamilyName" class="block text-sm text-slate-700 bg-red-50/60 border border-red-100 rounded-lg p-3 font-medium">
+                            Mr. [First Name] [Middle Name] [Family Name]
+                        </output>
+                    </div>
+
+                    <!-- Output #2: Royal Blue Heading -->
+                    <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <h3 class="text-base font-extrabold text-blue-600 mb-1.5">Output #2 &mdash; Contact Details Summary</h3>
+                        <output id="out-2" name="output2" for="txtEmail txtPhone ddContact" class="block text-sm text-slate-700 bg-blue-50/60 border border-blue-100 rounded-lg p-3 font-medium">
+                            Email: Not entered | Phone: Not entered | Preferred: Email Address
+                        </output>
+                    </div>
+
+                    <!-- Output #3: Emerald Green Heading -->
+                    <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <h3 class="text-base font-extrabold text-emerald-600 mb-1.5">Output #3 &mdash; Formatted Mailing Address</h3>
+                        <output id="out-3" name="output3" for="txtStreet txtCity txtPostalCode txtCountry" class="block text-sm text-slate-700 bg-emerald-50/60 border border-emerald-100 rounded-lg p-3 font-medium">
+                            Street, City, Postal Code, Country (Awaiting input)
+                        </output>
+                    </div>
+
+                    <!-- Output #4: Purple Heading -->
+                    <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <h3 class="text-base font-extrabold text-purple-600 mb-1.5">Output #4 &mdash; Demographics &amp; Career Profile</h3>
+                        <output id="out-4" name="output4" for="ddGender ddMarital ddEducation txtOccupation" class="block text-sm text-slate-700 bg-purple-50/60 border border-purple-100 rounded-lg p-3 font-medium">
+                            Gender: Female | Status: Single | Education: Bachelor's Degree | Role: Unspecified
+                        </output>
+                    </div>
+
+                    <!-- Output #5: Amber / Orange Heading -->
+                    <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <h3 class="text-base font-extrabold text-amber-600 mb-1.5">Output #5 &mdash; Survey Questionnaire Score (Forms #1&ndash;#10)</h3>
+                        <output id="out-5" name="output5" class="block text-sm text-slate-700 bg-amber-50/60 border border-amber-100 rounded-lg p-3 font-medium">
+                            Answered: 0/10 | Yes: 0 | No: 0
+                        </output>
+                    </div>
+
+                    <!-- Output #6: Teal Heading -->
+                    <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <h3 class="text-base font-extrabold text-teal-600 mb-1.5">Output #6 &mdash; Technical Stack &amp; Software Tools</h3>
+                        <output id="out-6" name="output6" for="lstProgramming lstTools" class="block text-sm text-slate-700 bg-teal-50/60 border border-teal-100 rounded-lg p-3 font-medium">
+                            Languages: HTML5 &amp; CSS3, JavaScript (ES6+) | Tools: VS Code, Git &amp; GitHub
+                        </output>
+                    </div>
+
+                    <!-- Output #7: Pink / Magenta Heading -->
+                    <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <h3 class="text-base font-extrabold text-pink-600 mb-1.5">Output #7 &mdash; Travel &amp; Spoken Languages</h3>
+                        <output id="out-7" name="output7" for="lstCountries lstLanguages" class="block text-sm text-slate-700 bg-pink-50/60 border border-pink-100 rounded-lg p-3 font-medium">
+                            Visited: Ghana | Languages: English
+                        </output>
+                    </div>
+
+                    <!-- Output #8: Indigo Heading -->
+                    <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <h3 class="text-base font-extrabold text-indigo-600 mb-1.5">Output #8 &mdash; Lifestyle, Hobbies &amp; Favorites</h3>
+                        <output id="out-8" name="output8" for="lstFruits lstHobbies lstSubjects lstInstruments lstSports lstGenres" class="block text-sm text-slate-700 bg-indigo-50/60 border border-indigo-100 rounded-lg p-3 font-medium">
+                            Mango, Photography, Computer Science, Piano / Keyboard, Football / Soccer, Science Fiction
+                        </output>
+                    </div>
+
+                    <!-- Output #9: Cyan Heading -->
+                    <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <h3 class="text-base font-extrabold text-cyan-700 mb-1.5">Output #9 &mdash; Skill Confidence Index</h3>
+                        <output id="out-9" name="output9" for="rngScore" class="block text-sm text-slate-700 bg-cyan-50/60 border border-cyan-100 rounded-lg p-3 font-medium">
+                            Confidence Rating: 85% (Advanced Proficiency)
+                        </output>
+                    </div>
+
+                    <!-- Output #10: Slate / Charcoal Heading -->
+                    <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <h3 class="text-base font-extrabold text-slate-800 mb-1.5">Output #10 &mdash; Annualized Practice Projection</h3>
+                        <output id="out-10" name="output10" for="rngHours" class="block text-sm text-slate-700 bg-slate-100 border border-slate-200 rounded-lg p-3 font-medium">
+                            15 hrs/week &times; 52 weeks = 780 hours/year
+                        </output>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===================================================================== -->
+            <!-- HORIZONTAL RULE #6: SIZE 10, TEAL                                     -->
+            <!-- ===================================================================== -->
+            <hr size="10" color="#0d9488" class="hr-10 bg-teal-600" title="Horizontal Rule - Size 10, Teal">
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-slate-50 border-t border-slate-200 px-6 py-5 text-center text-xs text-slate-500">
+            HTML5 Interactive Showcase &bull; 10 Forms &bull; Alternating 5px &amp; 10px Colored Horizontal Rules &bull; 10 Outputs &bull; 10 Text Inputs &bull; 2 Buttons &bull; 10 Scroll List Boxes &bull; 5 Drop-Down Menus
+        </footer>
+    </div>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+        // Helper to read selected options from a multi-select scroll list box
+        function getSelectedValues(selectId) {
+            const selectEl = document.getElementById(selectId);
+            if (!selectEl) return 'None';
+            const selected = Array.from(selectEl.selectedOptions).map(opt => opt.value);
+            return selected.length > 0 ? selected.join(', ') : 'None selected';
+        }
+
+        // Show status notification banner
+        function showBanner(message, type) {
+            const banner = document.getElementById('statusBanner');
+            const text = document.getElementById('statusText');
+            banner.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'text-emerald-800', 'bg-amber-50', 'border-amber-200', 'text-amber-800');
+            
+            if (type === 'success') {
+                banner.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-800');
+            } else {
+                banner.classList.add('bg-amber-50', 'border-amber-200', 'text-amber-800');
+            }
+            text.textContent = message;
+        }
+
+        function hideBanner() {
+            document.getElementById('statusBanner').classList.add('hidden');
+        }
+
+        // Update live sliders (Output #9 and Output #10)
+        function updateLiveSliders() {
+            const score = parseInt(document.getElementById('rngScore').value, 10);
+            const hours = parseInt(document.getElementById('rngHours').value, 10);
+
+            document.getElementById('rngScoreVal').textContent = score + '%';
+            document.getElementById('rngHoursVal').textContent = hours + ' hrs';
+
+            let tier = 'Beginner Level';
+            if (score >= 80) tier = 'Advanced Proficiency';
+            else if (score >= 50) tier = 'Intermediate Proficiency';
+
+            document.getElementById('out-9').value = `Confidence Rating: ${score}% (${tier})`;
+            document.getElementById('out-10').value = `${hours} hrs/week × 52 weeks = ${hours * 52} hours/year`;
+        }
+
+        // Process and update all 10 <output> elements
+        function computeAllOutputs(isSubmitAction = false) {
+            // 1. Gather Text Boxes
+            const firstName = document.getElementById('txtFirstName').value.trim() || '[First Name]';
+            const middleName = document.getElementById('txtMiddleName').value.trim();
+            const familyName = document.getElementById('txtFamilyName').value.trim() || '[Family Name]';
+            const email = document.getElementById('txtEmail').value.trim() || 'Not entered';
+            const phone = document.getElementById('txtPhone').value.trim() || 'Not entered';
+            const street = document.getElementById('txtStreet').value.trim() || 'Street';
+            const city = document.getElementById('txtCity').value.trim() || 'City';
+            const country = document.getElementById('txtCountry').value.trim() || 'Country';
+            const postal = document.getElementById('txtPostalCode').value.trim() || 'Postal Code';
+            const occupation = document.getElementById('txtOccupation').value.trim() || 'Unspecified';
+
+            // 2. Gather 5 Drop-Down Menus
+            const title = document.getElementById('ddTitle').value;
+            const gender = document.getElementById('ddGender').value;
+            const education = document.getElementById('ddEducation').value;
+            const marital = document.getElementById('ddMarital').value;
+            const contactPref = document.getElementById('ddContact').value;
+
+            // 3. Tally Yes/No across Form #1 through Form #10
+            let yesCount = 0;
+            let noCount = 0;
+            for (let i = 1; i <= 10; i++) {
+                const formEl = document.getElementById(`form-${i}`);
+                const checkedRadio = formEl.querySelector('input[type="radio"]:checked');
+                if (checkedRadio) {
+                    if (checkedRadio.value === 'Yes') yesCount++;
+                    else if (checkedRadio.value === 'No') noCount++;
+                }
+            }
+            const answeredTotal = yesCount + noCount;
+
+            // 4. Populate Output #1 through Output #8
+            const fullNameStr = middleName
+                ? `${title} ${firstName} ${middleName} ${familyName}`
+                : `${title} ${firstName} ${familyName}`;
+            document.getElementById('out-1').value = fullNameStr;
+
+            document.getElementById('out-2').value = `Email: ${email} | Phone: ${phone} | Preferred: ${contactPref}`;
+
+            document.getElementById('out-3').value = `${street}, ${city}, ${postal}, ${country}`;
+
+            document.getElementById('out-4').value = `Gender: ${gender} | Status: ${marital} | Education: ${education} | Role: ${occupation}`;
+
+            document.getElementById('out-5').value = `Answered: ${answeredTotal}/10 Forms | Yes: ${yesCount} | No: ${noCount}`;
+
+            document.getElementById('out-6').value = `Languages: ${getSelectedValues('lstProgramming')} | Tools: ${getSelectedValues('lstTools')}`;
+
+            document.getElementById('out-7').value = `Visited: ${getSelectedValues('lstCountries')} | Spoken: ${getSelectedValues('lstLanguages')}`;
+
+            const lifestyleItems = [
+                getSelectedValues('lstFruits'),
+                getSelectedValues('lstHobbies'),
+                getSelectedValues('lstSubjects'),
+                getSelectedValues('lstInstruments'),
+                getSelectedValues('lstSports'),
+                getSelectedValues('lstGenres')
+            ].filter(val => val !== 'None selected');
+            document.getElementById('out-8').value = lifestyleItems.length > 0 ? lifestyleItems.join(' • ') : 'No lifestyle items selected';
+
+            // 5. Update Output #9 & Output #10
+            updateLiveSliders();
+
+            if (isSubmitAction) {
+                showBanner('All 10 forms, 10 text inputs, 5 drop-downs, and 10 scroll list boxes have been processed into Outputs #1–#10!', 'success');
+            }
+        }
+
+        // Reset all forms, inputs, selects, and outputs cleanly
+        function resetAllFields() {
+            // Reset all 10 individual forms
+            for (let i = 1; i <= 10; i++) {
+                const formEl = document.getElementById(`form-${i}`);
+                if (formEl) formEl.reset();
+            }
+
+            // Clear all 10 text boxes
+            const textIds = [
+                'txtFirstName', 'txtFamilyName', 'txtMiddleName', 'txtEmail',
+                'txtPhone', 'txtStreet', 'txtCity', 'txtCountry', 'txtPostalCode', 'txtOccupation'
+            ];
+            textIds.forEach(id => {
+                document.getElementById(id).value = '';
+            });
+
+            // Reset 5 drop-down menus to defaults
+            document.getElementById('ddTitle').selectedIndex = 0;
+            document.getElementById('ddGender').selectedIndex = 0;
+            document.getElementById('ddEducation').value = "Bachelor's Degree";
+            document.getElementById('ddMarital').selectedIndex = 0;
+            document.getElementById('ddContact').selectedIndex = 0;
+
+            // Reset 10 scroll-down list boxes to their initial selected states
+            const listIds = [
+                'lstProgramming', 'lstFruits', 'lstCountries', 'lstHobbies', 'lstSubjects',
+                'lstInstruments', 'lstSports', 'lstTools', 'lstGenres', 'lstLanguages'
+            ];
+            listIds.forEach(id => {
+                const sel = document.getElementById(id);
+                Array.from(sel.options).forEach(opt => {
+                    opt.selected = opt.defaultSelected;
+                });
+            });
+
+            // Reset live sliders
+            document.getElementById('rngScore').value = 85;
+            document.getElementById('rngHours').value = 15;
+
+            // Recompute default outputs
+            computeAllOutputs(false);
+            showBanner('All forms, text fields, menus, list boxes, and outputs have been reset to their default state.', 'reset');
+        }
+
+        // Attach Event Listeners on Window Load
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('btnSubmit').addEventListener('click', (e) => {
+                e.preventDefault();
+                computeAllOutputs(true);
+                document.getElementById('section-outputs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+            document.getElementById('btnReset').addEventListener('click', (e) => {
+                e.preventDefault();
+                resetAllFields();
+            });
+
+            // Live updates for sliders and radio buttons
+            document.getElementById('rngScore').addEventListener('input', updateLiveSliders);
+            document.getElementById('rngHours').addEventListener('input', updateLiveSliders);
+
+            document.querySelectorAll('.yesno-form input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', () => computeAllOutputs(false));
+            });
+
+            // Initialize outputs on first load
+            computeAllOutputs(false);
+        });
+    </script>
+</body>
+</html>
